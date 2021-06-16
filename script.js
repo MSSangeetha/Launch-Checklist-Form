@@ -15,7 +15,7 @@ form.addEventListener("click", function(event) {
 let faultyItemsInput = document.getElementById("faultyItems");
 let pilotStatusInput = document.getElementById("pilotStatus");
 let copilotStatusInput = document.getElementById("copilotStatus");
-
+let fuelStatusInput = document.getElementById("fuelStatus");
 let cargoStatusInput = document.getElementById("cargoStatus");
 
 let launchStatusInput = document.getElementById("launchStatus");
@@ -40,7 +40,8 @@ else{
 if (fuelLevelInput.value < standardFuel){
 	faultyItemsInput.style.visibility = "visible";
 	pilotStatusInput.innerHTML = `The Pilot ${pilotsName.value} is ready for launch`;
-	copilotStatusInput.innerHTML = `The CoPilot ${coPilotsName.value} is ready for launch`;
+   fuelStatusInput.innerHTML = `Fuel level to`;
+	copilotStatusInput.innerHTML = `The Co-pilot ${coPilotsName.value} is ready for launch`;
 	launchStatusInput.innerHTML = "Shuttle not ready for launch";
 	launchStatusInput.style.color = "red";
 }
@@ -65,7 +66,7 @@ else if (fuelLevelInput.value > standardFuel && cargoMassInput.value < 10000){
    response.json().then(function(json) {
       const missionTargetField = document.getElementById("missionTarget");  
       
-         let index = 0;
+         let index = Math.floor(Math.random() * json.length);
          missionTargetField.innerHTML = `<h2>Mission Destination</h2>
          <ol>
             <li>Name: ${json[index].name}</li>
@@ -76,7 +77,7 @@ else if (fuelLevelInput.value > standardFuel && cargoMassInput.value < 10000){
          </ol>
          <img src="${json[index].image}">`;
          // index = (index + 1) % json.length;
-         index = Math.floor(Math.random() * json.length);
+         
     
 
    });
