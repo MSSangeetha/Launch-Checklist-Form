@@ -26,7 +26,7 @@ let standardFuel = 10000;
 // if(!isNaN(pilotsName.value)|| !isNaN(coPilotsName.value) || !isNaN(fuelLevelInput.value) || !isNaN(cargoMassInput.value))
 
 if(fuelLevelInput.value === "" || cargoMassInput.value === "" || pilotsName.value === "" || coPilotsName.value === ""){	
-alert("All fields are required");
+alert("All fields are required!");
 // event.preventDefault();
 }
 
@@ -40,7 +40,7 @@ else{
 if (fuelLevelInput.value < standardFuel){
 	faultyItemsInput.style.visibility = "visible";
 	pilotStatusInput.innerHTML = `The Pilot ${pilotsName.value} is ready for launch`;
-   fuelStatusInput.innerHTML = `Fuel level to`;
+   fuelStatusInput.innerHTML = `Fuel level too low for launch`;
 	copilotStatusInput.innerHTML = `The Co-pilot ${coPilotsName.value} is ready for launch`;
 	launchStatusInput.innerHTML = "Shuttle not ready for launch";
 	launchStatusInput.style.color = "red";
@@ -61,6 +61,8 @@ else if (fuelLevelInput.value > standardFuel && cargoMassInput.value < 10000){
 	copilotStatusInput.innerHTML = `The CoPilot ${coPilotsName.value} is ready for launch`;
 	launchStatusInput.style.color = "green";
 	launchStatusInput.innerHTML = "Shuttle is ready for launch";
+   cargoStatusInput.innerHTML = "Cargo mass is good for the shuttle to take off";
+   fuelStatusInput.innerHTML = `Fuel level is good for the shuttle to take off`;
 
 	fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response){
    response.json().then(function(json) {
